@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spaceflower – Blumenladen Wien</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F0E8;
+    --sage: #7A8C6E;
+    --sage-light: #B8C9A8;
+    --sage-dark: #3D4E35;
+    --blush: #D4A09A;
+    --blush-light: #EDD5D2;
+    --charcoal: #2A2A2A;
+    --warm-white: #FDFAF5;
+    --gold: #C4A05A;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--warm-white);
+    color: var(--charcoal);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.4rem 4rem;
+    background: rgba(253, 250, 245, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(122, 140, 110, 0.15);
+  }
+
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--sage-dark);
+  }
+
+  .logo span {
+    color: var(--blush);
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+  }
+
+  nav a {
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+
+  nav a:hover { color: var(--sage); }
+
+  .nav-cta {
+    background: var(--sage-dark) !important;
+    color: var(--cream) !important;
+    padding: 0.55rem 1.4rem;
+    border-radius: 2px;
+    font-size: 0.75rem !important;
+    letter-spacing: 0.14em;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--sage) !important; color: #fff !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6rem 4rem 6rem 6rem;
+    position: relative;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--sage);
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem;
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--charcoal);
+    margin-bottom: 1.8rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--sage-dark);
+  }
+
+  .hero-desc {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #5a5a5a;
+    max-width: 420px;
+    margin-bottom: 2.8rem;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+  }
+
+  .btn-primary {
+    background: var(--sage-dark);
+    color: var(--cream);
+    padding: 0.9rem 2rem;
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: background 0.2s;
+  }
+
+  .btn-primary:hover { background: var(--sage); }
+
+  .btn-secondary {
+    color: var(--sage-dark);
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--sage-dark);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .btn-secondary:hover { color: var(--blush); border-color: var(--blush); }
+
+  .hero-right {
+    position: relative;
+    background: var(--sage-light);
+    overflow: hidden;
+  }
+
+  .hero-illustration {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Decorative floating badge */
+  .hero-badge {
+    position: absolute;
+    bottom: 3rem;
+    left: -2.5rem;
+    background: var(--warm-white);
+    border: 1px solid rgba(122,140,110,0.3);
+    padding: 1.2rem 1.8rem;
+    border-radius: 4px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    z-index: 2;
+  }
+
+  .hero-badge p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    color: var(--sage-dark);
+    letter-spacing: 0.05em;
+  }
+
+  .hero-badge strong {
+    font-size: 1.8rem;
+    display: block;
+    font-weight: 600;
+  }
+
+  /* SECTION COMMONS */
+  section { padding: 6rem 6rem; }
+
+  .section-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--sage);
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--charcoal);
+    margin-bottom: 1rem;
+  }
+
+  h2 em { font-style: italic; color: var(--sage-dark); }
+
+  /* STRÄUSSE SECTION */
+  .straeusse { background: var(--warm-white); }
+
+  .straeusse-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 5rem;
+    align-items: center;
+    margin-top: 3.5rem;
+  }
+
+  .straeusse-text p {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: #5a5a5a;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+  }
+
+  .straeusse-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+  }
+
+  .flower-card {
+    background: var(--cream);
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid rgba(122,140,110,0.18);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .flower-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.09);
+  }
+
+  .flower-card-img {
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    background: linear-gradient(135deg, var(--sage-light) 0%, var(--blush-light) 100%);
+  }
+
+  .flower-card-body {
+    padding: 1rem 1.2rem;
+  }
+
+  .flower-card-body h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--sage-dark);
+    margin-bottom: 0.3rem;
+  }
+
+  .flower-card-body p {
+    font-size: 0.78rem;
+    color: #888;
+    line-height: 1.5;
+  }
+
+  /* SERVICES */
+  .services {
+    background: var(--cream);
+    padding: 6rem;
+  }
+
+  .services-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: end;
+    margin-bottom: 4rem;
+  }
+
+  .services-intro p {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: #5a5a5a;
+    font-weight: 300;
+  }
+
+  .services-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
+  .service-item {
+    background: var(--warm-white);
+    border: 1px solid rgba(122,140,110,0.18);
+    border-radius: 4px;
+    padding: 2rem 1.5rem;
+    transition: border-color 0.2s, transform 0.3s;
+  }
+
+  .service-item:hover {
+    border-color: var(--sage);
+    transform: translateY(-3px);
+  }
+
+  .service-icon {
+    font-size: 2.2rem;
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+
+  .service-item h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--sage-dark);
+    margin-bottom: 0.6rem;
+  }
+
+  .service-item p {
+    font-size: 0.82rem;
+    color: #777;
+    line-height: 1.65;
+  }
+
+  /* WHY US */
+  .why {
+    background: var(--sage-dark);
+    color: var(--cream);
+    padding: 6rem;
+  }
+
+  .why .section-label { color: var(--sage-light); }
+  .why .section-label::before { background: var(--sage-light); }
+  .why h2 { color: var(--cream); }
+  .why h2 em { color: var(--blush-light); }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3.5rem;
+  }
+
+  .why-item {
+    border-top: 1px solid rgba(255,255,255,0.15);
+    padding-top: 2rem;
+  }
+
+  .why-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--blush-light);
+    line-height: 1;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+  }
+
+  .why-item h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-bottom: 0.8rem;
+    color: #fff;
+  }
+
+  .why-item p {
+    font-size: 0.85rem;
+    line-height: 1.75;
+    color: rgba(245,240,232,0.65);
+    font-weight: 300;
+  }
+
+  /* ÜBER UNS */
+  .about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    min-height: 560px;
+  }
+
+  .about-visual {
+    background: var(--blush-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-visual::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 20px,
+      rgba(212,160,154,0.08) 20px,
+      rgba(212,160,154,0.08) 21px
+    );
+  }
+
+  .about-content {
+    padding: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--warm-white);
+  }
+
+  .about-content p {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: #5a5a5a;
+    font-weight: 300;
+    margin-bottom: 1.2rem;
+  }
+
+  .about-detail {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .about-stat {
+    border-left: 2px solid var(--blush);
+    padding-left: 1rem;
+  }
+
+  .about-stat strong {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--sage-dark);
+    display: block;
+  }
+
+  .about-stat span {
+    font-size: 0.75rem;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  /* KONTAKT */
+  .kontakt {
+    background: var(--cream);
+    padding: 6rem;
+  }
+
+  .kontakt-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    margin-top: 3.5rem;
+    align-items: start;
+  }
+
+  .kontakt-info h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--sage-dark);
+    margin-bottom: 1.8rem;
+  }
+
+  .kontakt-detail {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+    align-items: flex-start;
+  }
+
+  .kontakt-detail .icon {
+    width: 36px;
+    height: 36px;
+    background: var(--sage-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+    color: var(--sage-dark);
+  }
+
+  .kontakt-detail div p {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #999;
+    margin-bottom: 0.15rem;
+  }
+
+  .kontakt-detail div strong {
+    font-size: 0.9rem;
+    color: var(--charcoal);
+    font-weight: 400;
+    line-height: 1.5;
+    display: block;
+  }
+
+  .hours-block {
+    background: var(--warm-white);
+    border: 1px solid rgba(122,140,110,0.18);
+    border-radius: 4px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .hours-block h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    color: var(--sage-dark);
+    margin-bottom: 1rem;
+  }
+
+  .hours-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.82rem;
+    color: #777;
+    padding: 0.35rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+
+  .hours-row:last-child { border-bottom: none; }
+  .hours-row span:last-child { color: var(--charcoal); font-weight: 500; }
+
+  /* Contact Form */
+  .kontakt-form-wrap {
+    background: var(--warm-white);
+    border: 1px solid rgba(122,140,110,0.18);
+    border-radius: 4px;
+    padding: 2.5rem;
+  }
+
+  .kontakt-form-wrap h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--sage-dark);
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.2rem;
+  }
+
+  .form-group label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #999;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(122,140,110,0.3);
+    border-radius: 2px;
+    background: var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
+    color: var(--charcoal);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--sage);
+  }
+
+  .form-group textarea { resize: vertical; min-height: 110px; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .btn-form {
+    background: var(--sage-dark);
+    color: var(--cream);
+    border: none;
+    padding: 0.9rem 2rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.2s;
+    margin-top: 0.5rem;
+  }
+
+  .btn-form:hover { background: var(--sage); }
+
+  /* MAP placeholder */
+  .map-placeholder {
+    background: var(--sage-light);
+    border-radius: 4px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    border: 1px solid rgba(122,140,110,0.25);
+    text-decoration: none;
+    color: var(--sage-dark);
+    transition: background 0.2s;
+  }
+
+  .map-placeholder:hover { background: #a8bca0; }
+  .map-placeholder span { font-size: 2rem; }
+  .map-placeholder p { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; }
+
+  /* FOOTER */
+  footer {
+    background: var(--charcoal);
+    color: rgba(245,240,232,0.6);
+    padding: 3rem 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--cream);
+    letter-spacing: 0.08em;
+  }
+
+  .footer-logo span { color: var(--blush); }
+
+  footer p {
+    font-size: 0.78rem;
+    line-height: 1.6;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .footer-links a {
+    text-decoration: none;
+    color: rgba(245,240,232,0.5);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--blush-light); }
+
+  /* HERO SVG */
+  .hero-svg-wrap {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+  }
+
+  /* Responsive basics */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 1.5rem; }
+    nav ul { display: none; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-right { display: none; }
+    .hero-left { padding: 5rem 2rem 3rem; }
+    .hero h1 { font-size: 3rem; }
+    section, .services, .why, .kontakt { padding: 4rem 2rem; }
+    .straeusse-grid, .services-intro, .kontakt-grid, .about { grid-template-columns: 1fr; }
+    .services-list { grid-template-columns: 1fr 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .about-visual { min-height: 220px; }
+    .about-content { padding: 3rem 2rem; }
+    footer { padding: 2rem 1.5rem; flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Space<span>flower</span></div>
+  <ul>
+    <li><a href="#straeusse">Sträuße</a></li>
+    <li><a href="#services">Anlässe</a></li>
+    <li><a href="#about">Über uns</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+  <a href="#kontakt" class="nav-cta">Anfrage stellen</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Blumenladen Wien 1020</div>
+    <h1>Blumen,<br>die <em>Geschichten</em><br>erzählen.</h1>
+    <p class="hero-desc">Handgefertigte Sträuße & florale Arrangements für jeden besonderen Moment. Von der Leopoldstadt mit Liebe.</p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-primary">Unsere Anlässe</a>
+      <a href="#kontakt" class="btn-secondary">Kontakt aufnehmen</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-illustration">
+      <div class="hero-svg-wrap">
+        <svg viewBox="0 0 420 520" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:360px;">
+          <!-- Background circle -->
+          <circle cx="210" cy="260" r="180" fill="rgba(255,255,255,0.25)"/>
+          <!-- Stems -->
+          <path d="M210 480 Q205 380 200 300 Q195 250 210 180" stroke="#3D4E35" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M200 480 Q215 400 220 330 Q225 270 200 200" stroke="#3D4E35" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M220 480 Q205 420 208 360 Q212 300 225 220" stroke="#3D4E35" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <!-- Leaves -->
+          <path d="M205 350 Q180 320 175 290 Q195 305 210 340Z" fill="#5A7A4A" opacity="0.85"/>
+          <path d="M215 310 Q242 285 248 258 Q228 270 218 305Z" fill="#7A8C6E" opacity="0.8"/>
+          <path d="M200 390 Q175 370 172 345 Q192 358 204 385Z" fill="#5A7A4A" opacity="0.7"/>
+          <!-- Large center rose -->
+          <circle cx="208" cy="165" r="42" fill="#D4A09A" opacity="0.9"/>
+          <circle cx="208" cy="165" r="30" fill="#C47E78"/>
+          <circle cx="208" cy="165" r="18" fill="#A85E5A"/>
+          <circle cx="208" cy="165" r="8" fill="#7A3C3A"/>
+          <!-- Petal details -->
+          <ellipse cx="208" cy="123" rx="14" ry="20" fill="#D4A09A" opacity="0.7"/>
+          <ellipse cx="246" cy="140" rx="14" ry="20" fill="#D4A09A" opacity="0.7" transform="rotate(45 246 140)"/>
+          <ellipse cx="246" cy="188" rx="14" ry="20" fill="#D4A09A" opacity="0.65" transform="rotate(135 246 188)"/>
+          <ellipse cx="208" cy="207" rx="14" ry="20" fill="#C47E78" opacity="0.7"/>
+          <ellipse cx="170" cy="188" rx="14" ry="20" fill="#D4A09A" opacity="0.65" transform="rotate(-135 170 188)"/>
+          <ellipse cx="170" cy="140" rx="14" ry="20" fill="#D4A09A" opacity="0.7" transform="rotate(-45 170 140)"/>
+          <!-- Left flower -->
+          <circle cx="160" cy="215" r="28" fill="#EDD5D2" opacity="0.9"/>
+          <circle cx="160" cy="215" r="17" fill="#D4A09A"/>
+          <circle cx="160" cy="215" r="8" fill="#A85E5A"/>
+          <ellipse cx="160" cy="187" rx="9" ry="14" fill="#EDD5D2" opacity="0.75"/>
+          <ellipse cx="184" cy="199" rx="9" ry="14" fill="#EDD5D2" opacity="0.7" transform="rotate(45 184 199)"/>
+          <ellipse cx="184" cy="231" rx="9" ry="14" fill="#EDD5D2" opacity="0.7" transform="rotate(135 184 231)"/>
+          <ellipse cx="160" cy="243" rx="9" ry="14" fill="#D4A09A" opacity="0.75"/>
+          <ellipse cx="136" cy="231" rx="9" ry="14" fill="#EDD5D2" opacity="0.7" transform="rotate(-135 136 231)"/>
+          <ellipse cx="136" cy="199" rx="9" ry="14" fill="#EDD5D2" opacity="0.7" transform="rotate(-45 136 199)"/>
+          <!-- Right flower (smaller) -->
+          <circle cx="260" cy="200" r="24" fill="#B8C9A8" opacity="0.9"/>
+          <circle cx="260" cy="200" r="14" fill="#7A8C6E"/>
+          <circle cx="260" cy="200" r="7" fill="#3D4E35"/>
+          <ellipse cx="260" cy="176" rx="8" ry="12" fill="#B8C9A8" opacity="0.8"/>
+          <ellipse cx="281" cy="189" rx="8" ry="12" fill="#B8C9A8" opacity="0.75" transform="rotate(45 281 189)"/>
+          <ellipse cx="281" cy="211" rx="8" ry="12" fill="#B8C9A8" opacity="0.75" transform="rotate(135 281 211)"/>
+          <ellipse cx="260" cy="224" rx="8" ry="12" fill="#B8C9A8" opacity="0.8"/>
+          <ellipse cx="239" cy="211" rx="8" ry="12" fill="#B8C9A8" opacity="0.75" transform="rotate(-135 239 211)"/>
+          <ellipse cx="239" cy="189" rx="8" ry="12" fill="#B8C9A8" opacity="0.75" transform="rotate(-45 239 189)"/>
+          <!-- Small accent blooms -->
+          <circle cx="190" cy="130" r="12" fill="#EDD5D2" opacity="0.8"/>
+          <circle cx="190" cy="130" r="6" fill="#D4A09A"/>
+          <circle cx="230" cy="240" r="9" fill="#B8C9A8" opacity="0.75"/>
+          <circle cx="230" cy="240" r="4" fill="#7A8C6E"/>
+          <!-- Wrap ribbon -->
+          <path d="M165 460 Q210 445 255 460 Q240 490 210 495 Q180 490 165 460Z" fill="#3D4E35" opacity="0.7"/>
+          <path d="M175 458 Q210 448 245 458 Q228 478 210 482 Q192 478 175 458Z" fill="#5A7A4A" opacity="0.6"/>
+          <!-- Gold bow -->
+          <path d="M195 448 Q185 440 190 432 Q200 438 205 448Z" fill="#C4A05A" opacity="0.85"/>
+          <path d="M225 448 Q235 440 230 432 Q220 438 215 448Z" fill="#C4A05A" opacity="0.85"/>
+          <circle cx="210" cy="447" r="6" fill="#C4A05A"/>
+          <!-- Kraft paper wrap -->
+          <path d="M170 465 Q210 458 250 465 L255 480 Q210 472 165 480Z" fill="rgba(180,150,100,0.25)"/>
+        </svg>
+      </div>
+    </div>
+    <div class="hero-badge">
+      <p>Seit <strong>2018</strong></p>
+      <p style="font-size:0.72rem;color:#888;letter-spacing:0.1em;text-transform:uppercase;">in Wien Leopoldstadt</p>
+    </div>
+  </div>
+</section>
+
+<!-- STRÄUSSE -->
+<section id="straeusse" class="straeusse">
+  <div class="section-label">Unser Handwerk</div>
+  <div class="straeusse-grid">
+    <div class="straeusse-text">
+      <h2>Jeder Strauß<br>ein <em>Unikat</em></h2>
+      <p>Bei Spaceflower entstehen keine Sträuße von der Stange. Jedes Arrangement wird von unseren Floristinnen eigenhändig gebunden – mit frischen, saisonal ausgewählten Blumen und einem Gespür für Farbe, Form und Wirkung.</p>
+      <p>Ob romantisch und üppig, modern und minimalistisch oder wild und ungezähmt – wir setzen Ihre Vorstellungen in florale Kunst um.</p>
+      <a href="#kontakt" class="btn-primary" style="display:inline-block;margin-top:1rem;">Strauß bestellen</a>
+    </div>
+    <div class="straeusse-cards">
+      <div class="flower-card">
+        <div class="flower-card-img">🌹</div>
+        <div class="flower-card-body">
+          <h3>Rosen-Bouquet</h3>
+          <p>Klassisch und romantisch – in allen Farbtönen erhältlich.</p>
+        </div>
+      </div>
+      <div class="flower-card">
+        <div class="flower-card-img">🌸</div>
+        <div class="flower-card-body">
+          <h3>Frühlingsstrauß</h3>
+          <p>Leicht und luftig, mit saisonalen Blüten der Region.</p>
+        </div>
+      </div>
+      <div class="flower-card">
+        <div class="flower-card-img">🌻</div>
+        <div class="flower-card-body">
+          <h3>Sommerfreude</h3>
+          <p>Warm, leuchtkräftig, voller Lebensfreude.</p>
+        </div>
+      </div>
+      <div class="flower-card">
+        <div class="flower-card-img">💐</div>
+        <div class="flower-card-body">
+          <h3>Wildblumen-Mix</h3>
+          <p>Natürlich und ungezähmt – für besondere Charakterköpfe.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services">
+  <div class="section-label">Unsere Anlässe</div>
+  <div class="services-intro">
+    <h2>Florale Begleitung<br>für <em>jeden Moment</em></h2>
+    <p>Von der intimen Feier bis zur großen Hochzeit – wir gestalten florale Dekorationen, die Ihren besonderen Anlass unvergesslich machen. Persönliche Beratung und maßgeschneiderte Konzepte inklusive.</p>
+  </div>
+  <div class="services-list">
+    <div class="service-item">
+      <span class="service-icon">💍</span>
+      <h3>Hochzeiten</h3>
+      <p>Brautsträuße, Tischdekorationen, Blumenbögen und florale Raumgestaltung für Ihren schönsten Tag.</p>
+    </div>
+    <div class="service-item">
+      <span class="service-icon">🎂</span>
+      <h3>Geburtstage</h3>
+      <p>Strahlende Sträuße und festliche Arrangements, die jedes Jubiläum zum Erlebnis machen.</p>
+    </div>
+    <div class="service-item">
+      <span class="service-icon">💐</span>
+      <h3>Muttertag</h3>
+      <p>Zeigen Sie Ihre Liebe mit einem handgebundenen Strauß – rechtzeitig vorbestellen empfohlen.</p>
+    </div>
+    <div class="service-item">
+      <span class="service-icon">🎉</span>
+      <h3>Weitere Feiern</h3>
+      <p>Taufen, Firmenfeiern, Jubiläen, Beerdigungen – wir begleiten Sie mit Blumen in jeden Lebensmoment.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why">
+  <div class="section-label">Warum Spaceflower</div>
+  <h2>Qualität, die man<br><em>spürt</em></h2>
+  <div class="why-grid">
+    <div class="why-item">
+      <div class="why-num">01</div>
+      <h3>Frische Blumen täglich</h3>
+      <p>Wir beziehen unsere Blumen von ausgewählten Gärtnereien und dem Wiener Blumenmarkt – für maximale Frische und Haltbarkeit.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-num">02</div>
+      <h3>Individuelle Beratung</h3>
+      <p>Kein Strauß von der Stange. Wir nehmen uns Zeit für Ihre Wünsche und finden gemeinsam das perfekte floristische Konzept.</p>
+    </div>
+    <div class="why-item">
+      <div class="why-num">03</div>
+      <h3>Lieferung in Wien</h3>
+      <p>Wir liefern Ihre Blumen direkt nach Hause oder an den Veranstaltungsort – pünktlich und liebevoll verpackt.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ÜBER UNS -->
+<section id="about" class="about" style="padding:0;">
+  <div class="about-visual">
+    <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg" style="width:240px;opacity:0.7;">
+      <circle cx="150" cy="150" r="120" fill="none" stroke="#D4A09A" stroke-width="1" stroke-dasharray="6 4"/>
+      <circle cx="150" cy="150" r="80" fill="none" stroke="#7A8C6E" stroke-width="0.8" stroke-dasharray="4 6"/>
+      <text x="150" y="155" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="80" fill="#A85E5A" opacity="0.35">✿</text>
+      <text x="150" y="130" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="14" fill="#3D4E35" letter-spacing="4">SPACEFLOWER</text>
+      <text x="150" y="175" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="10" fill="#7A8C6E" letter-spacing="2">WIEN · 1020</text>
+    </svg>
+  </div>
+  <div class="about-content">
+    <div class="section-label">Über uns</div>
+    <h2>Ein Laden,<br>eine <em>Leidenschaft</em></h2>
+    <p>Spaceflower wurde 2018 in der Leopoldstadt gegründet – mit dem Traum, Blumen nicht nur zu verkaufen, sondern Erlebnisse zu schenken. Unser kleines, leidenschaftliches Team aus Floristinnen lebt für die Kunst des floralen Handwerks.</p>
+    <p>Wir glauben, dass Blumen sprechen. Wir sorgen dafür, dass sie die richtigen Worte finden.</p>
+    <div class="about-detail">
+      <div class="about-stat">
+        <strong>+500</strong>
+        <span>Hochzeiten begleitet</span>
+      </div>
+      <div class="about-stat">
+        <strong>7</strong>
+        <span>Jahre Erfahrung</span>
+      </div>
+      <div class="about-stat">
+        <strong>täglich</strong>
+        <span>frische Lieferung</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section id="kontakt" class="kontakt">
+  <div class="section-label">Kontakt</div>
+  <h2>Bereit für Ihren<br><em>besonderen Moment?</em></h2>
+  <div class="kontakt-grid">
+    <div class="kontakt-info">
+      <h3>Besuchen Sie uns</h3>
+      <div class="kontakt-detail">
+        <div class="icon">📍</div>
+        <div>
+          <p>Adresse</p>
+          <strong>Praterstraße 42<br>1020 Wien, Österreich</strong>
+        </div>
+      </div>
+      <div class="kontakt-detail">
+        <div class="icon">📞</div>
+        <div>
+          <p>Telefon</p>
+          <strong>+43 1 234 56 78</strong>
+        </div>
+      </div>
+      <div class="kontakt-detail">
+        <div class="icon">✉</div>
+        <div>
+          <p>E-Mail</p>
+          <strong>hallo@spaceflower.at</strong>
+        </div>
+      </div>
+      <div class="kontakt-detail">
+        <div class="icon">📱</div>
+        <div>
+          <p>Instagram</p>
+          <strong>@spaceflower.wien</strong>
+        </div>
+      </div>
+
+      <div class="hours-block">
+        <h4>Öffnungszeiten</h4>
+        <div class="hours-row"><span>Montag – Freitag</span><span>08:00 – 18:30</span></div>
+        <div class="hours-row"><span>Samstag</span><span>08:00 – 16:00</span></div>
+        <div class="hours-row"><span>Sonntag</span><span>Geschlossen</span></div>
+      </div>
+
+      <a href="https://maps.google.com/?q=Praterstraße+42,+1020+Wien" target="_blank" class="map-placeholder">
+        <span>🗺</span>
+        <p>In Google Maps öffnen</p>
+      </a>
+    </div>
+
+    <div class="kontakt-form-wrap">
+      <h3>Schreiben Sie uns</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Vorname</label>
+          <input type="text" placeholder="Maria">
+        </div>
+        <div class="form-group">
+          <label>Nachname</label>
+          <input type="text" placeholder="Mustermann">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>E-Mail</label>
+        <input type="email" placeholder="ihre@email.at">
+      </div>
+      <div class="form-group">
+        <label>Anlass</label>
+        <select>
+          <option value="">Bitte wählen...</option>
+          <option>Hochzeit</option>
+          <option>Geburtstag</option>
+          <option>Muttertag</option>
+          <option>Firmenfeier</option>
+          <option>Taufe / Erstkommunion</option>
+          <option>Trauerfeier</option>
+          <option>Sonstiges</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Ihre Nachricht</label>
+        <textarea placeholder="Erzählen Sie uns von Ihrem besonderen Anlass – Datum, Anzahl der Sträuße, Farbwünsche..."></textarea>
+      </div>
+      <button class="btn-form" onclick="this.textContent='Anfrage gesendet ✓'; this.style.background='#5A7A4A';">Anfrage senden</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">Space<span>flower</span></div>
+    <p style="margin-top:0.5rem;">Praterstraße 42 · 1020 Wien<br>hallo@spaceflower.at · +43 1 234 56 78</p>
+  </div>
+  <p style="font-size:0.75rem;">© 2025 Spaceflower Wien. Alle Rechte vorbehalten.</p>
+  <ul class="footer-links">
+    <li><a href="#">Impressum</a></li>
+    <li><a href="#">Datenschutz</a></li>
+    <li><a href="#">AGB</a></li>
+  </ul>
+</footer>
+
+</body>
+</html>
